@@ -44,7 +44,7 @@ export function fromHex(color, hex) {
  * @returns {hex}
  */
 export function toHex(color, alpha = true) {
-  const c = color.map((val) => Math.round(val * 255));
+  const c = color.map((val) => Math.max(0, Math.min(255, Math.round(val * 255))));
 
   return `#${(c[2] | (c[1] << 8) | (c[0] << 16) | (1 << 24))
     .toString(16)
